@@ -43,4 +43,12 @@ public class PersonTest{
     assertEquals(1, person.drinkCount());
   }
 
+  @Test 
+  public void canThrowUp() {
+    person.drink(wine);
+    Drinkable drink = person.throwUp();
+    Wine original = (Wine)drink;
+    assertEquals("wooooo I'm getting drunk", original.topUp());
+  }
+
 }

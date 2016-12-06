@@ -27,4 +27,11 @@ public class Person {
     cup.clear();
   }
 
+  public Drinkable throwUp () {
+    if (drinkCount() > 0) {
+      return cup.remove(0);
+    }
+    return null;
+  }
+
 }
