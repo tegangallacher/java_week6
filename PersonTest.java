@@ -1,14 +1,16 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.*;
 
 public class PersonTest{
   Person person;
   Coffee coffee;
+  Wine wine;
 
   @Before 
   public void before() {
     person = new Person("Tegan");
     coffee = new Coffee();
+    wine = new Wine();
   }
 
   @Test
@@ -17,38 +19,28 @@ public class PersonTest{
   }
 
   @Test
-  public void startsDayWithNoCoffee() {
-    assertEquals(0, person.coffeeCount());
+  public void startsDayWithNoDrink() {
+    assertEquals(0, person.drinkCount());
   }
 
   @Test
   public void canDrinkCoffee() {
     person.drink(coffee);
-    assertEquals(1, person.coffeeCount());
+    assertEquals(1, person.drinkCount());
   }
 
   @Test
-  public void cannotRefillCoffeeWhenCupIsFull() {
-    for (int i = 0; i < 10; i++) {
-      person.drink(coffee);
-    }
-    assertEquals(8, person.coffeeCount());
-  }
-
-  @Test
-  public void cupIsFull() {
-    for (int i = 0; i < 8; i++) {
-      person.drink(coffee);
-    }
-    assertEquals(true, person.cupFull());
-  }
-
-  @Test
-  public void startNewDayNeedingCoffee() {
+  public void startNewDayNeedingDrink() {
     person.drink(coffee);
-    assertEquals(1, person.coffeeCount());
+    assertEquals(1, person.drinkCount());
     person.newDay();
-    assertEquals(0, person.coffeeCount());
+    assertEquals(0, person.drinkCount());
+  }
+
+  @Test
+  public void canDrinkWine() {
+    person.drink(wine);
+    assertEquals(1, person.drinkCount());
   }
 
 }
