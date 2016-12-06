@@ -51,4 +51,11 @@ public class PersonTest{
     assertEquals("wooooo I'm getting drunk", original.topUp());
   }
 
+  @Test
+  public void drinkableItemCanTopUp() {
+    person.drink(coffee);
+    Drinkable drink = person.throwUp();
+    assertEquals("mmmmm the caffeine", drink.topUp());
+  }
+
 }
